@@ -1,0 +1,136 @@
+<!-- ========================================================
+ 
+       T-427-WEPO Web Programming II
+       Reykjavik University
+       Assignment 2: DrawioJS
+       Part: HTML
+       Assignment Due: 04.02.2018
+       Authors:
+               Darri Valgarðsson,
+               Edda Steinunn,
+               Sigurður Sturla Bjarnasson
+ 
+    ========================================================-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Drawio</title>
+        <link rel="stylesheet" href="Canvas.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+        <link rel="author" href="humans.txt">
+    </head>
+  
+    <body>
+        <div id="upperBars">
+            <div id="mainBar">
+                <img id="appIcon" src="EditorIcons/AppIcon.png" alt="Draw">
+                <h1 id="mainHeading">57PIXELS</h1>
+                <p id="tagline">Go nuts</p>
+            </div>
+            <div id="optionBar">
+                <button id="undo" class="undoredo undo fa fa-undo" aria-hidden="true"></button>
+                <button id="redo" class="undoredo redo fa fa-repeat" aria-hidden="true"></button>
+                <p class="options keepHidden drawTool lineTool lineWidth">line-width:</p>
+                <p class="options keepHidden circleTool rectTool textTool">fill</p>
+                <input type="checkbox" id="fillMark" class="options keepHidden circleTool rectTool textTool fillstroke" checked="checked" required>
+                <p class="options keepHidden circleTool rectTool textTool">border</p>
+                <input type="checkbox" id="strokeMark" class="options keepHidden circleTool rectTool textTool fillstroke" required>
+                <p class="options keepHidden circleTool rectTool">border-width:</p>
+                <form class="options keepHidden textTool">
+                    <select id="fontSelect">
+                      <option style="font-family: Arial, Helvetica, sans-serif">Arial</option>
+                      <option style="font-family: Courier New, Arial, sans-serif">Courier New</option>
+                      <option style="font-family: Palatino, Arial, sans-serif">Palatino</option>
+                      <option style="font-family: Verdana, Arial, sans-serif">Verdana</option>
+                      <option style="font-family: Georgia, Arial, sans-serif">Georgia</option>
+                      <option style="font-family: Times New Roman, Arial, sans-serif">Times New Roman</option>
+                      <option style="font-family: Comic Sans MS, cursive, sans-serif">Comic Sans MS</option>
+                      <option style="font-family: Impact, Charcoal, sans-serif">Impact</option>
+                      <option style="font-family: Lucida Console, Monaco, monospace">Lucida Console</option>
+                    </select>
+                  </form>
+                <p id="textPreview" class="keepHidden textTool">preview</p>
+                <div class="leftOptionBtns">
+                    <button id="save" class="saveclear undo w3-button w3-circle w3-teal">SAVE IMAGE</button>
+                    <button id="getAllSavedFiles" class="saveclear undo w3-button w3-circle w3-teal">GET IMAGE</button>
+                    <button id="clear" class="saveclear redo w3-button w3-circle w3-teal">NEW CANVAS</button>
+                </div>
+                    <p id="strokeWidthOutput" class="valueDisplay keepHidden drawTool lineTool circleTool rectTool"></p>
+                    <input type="range" min="1" max="100" value="1" class="options keepHidden drawTool lineTool circleTool rectTool slider" id="strokeWidth">
+                    <p id="textSizeOutput" class="valueDisplay keepHidden textTool"></p>
+                    <input type="range" min="8" max="300" value="50" class="options keepHidden textTool slider" id="textSizeSlider">
+            </div>
+        </div>
+        <div id="toolbar" width="100" height="500">
+                <span id="moveToolToolTip">
+                    <img id="moveTool" class="iconbar icons" src="EditorIcons/move.png" alt="Move">
+                    <span class="toolTipText">Moving Tool</span>
+                </span>
+                <span id="drawToolToolTip">
+                    <img id="drawTool" class="iconbar icons selected" src="EditorIcons/draw.png" alt="Draw">
+                    <span class="toolTipText">Pen Tool</span>
+                </span>
+                <span id="lineToolToolTip">
+                    <img id="lineTool" class="iconbar icons" src="EditorIcons/line.png" alt="Draw Line">
+                    <span class="toolTipText">Straight Line Tool</span>
+                </span>
+                <span id="rectToolToolTip">
+                    <img id="rectTool" class="iconbar icons" src="EditorIcons/rectangle.png" alt="Draw Rectangle">
+                    <span class="toolTipText">Rectangle Tool</span>
+                </span>
+                <span id="circleToolToolTip">
+                    <img id="circleTool" class="iconbar icons" src="EditorIcons/circle.png" alt="Draw Cirlce">
+                    <span class="toolTipText">Circle Tool</span>
+                </span>
+                <span id="textToolToolTip">
+                    <img id="textTool" class="iconbar icons" src="EditorIcons/text.png" alt="Insert Text">
+                    <span class="toolTipText">Insert Text Tool</span>
+                </span>
+                <div class="color-pickers">
+                    <span id="primaryColorToolTip">
+                        <div id="strokeColor" class="iconbar" width="35px" height="35px" >&nbsp</div>
+                        <span class="toolTipText">Stroke Color Picker</span>
+                    </span>
+                    <span id="secondaryColorToolTip">
+                        <div id="fillColor" class="iconbar" width="35px" height="35px" >&nbsp</div>
+                        <span class="toolTipText">Fill Color Picker</span>
+                    </span>
+                    <span id="switchColorToolTip">
+                        <button id="changeColorsBtn" class="fa fa-refresh" aria-hidden="true"></button>
+                        <span class="toolTipText">Swap Colors</span>
+                    </span>
+                </div>
+        </div>
+        <div id="canvasDiv">
+            <canvas id="canvas" width="1100" height="450">
+                    <div id="supportError">
+                            <h1>OH WOW! This is awkward.</h1>
+                            <i class="fa fa-meh-o"></i>
+                            <p>Unfortunately your browser does not support this functionality</p>
+                    </div>
+            </canvas>
+        </div>
+        <input type="text" id="textBox"></input>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+        <script src="./Canvas.js"></script>
+        <script src="./Shape.js"></script>
+    </body>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>These are your saved files. Click the one you want to play with</h2>
+            </br>
+            </br>
+           <ul id="insertFileNamesIntoMe"></ul>
+        </div>
+    </div>
+
+</html>

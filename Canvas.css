@@ -1,0 +1,409 @@
+* {
+    margin: 0;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #D9E3EA;
+    height: 100%;
+}
+#upperBars {
+    margin-left: 60px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#mainBar {
+    padding: 15px;
+    padding-left: 40px;
+    padding-bottom: 20px;
+    height: 70px;
+    background:  #fc295af3;
+    border : 1.5px solid #fc295af3;
+    border-radius: 20px 0px 0px 20px;
+}
+
+#optionBar {
+    padding: 5px;
+    padding-right: 100px;
+    margin-left: 30px;
+    height: 30px;
+    background:  #25323A;
+    border : 1.5px solid #25323A;
+    border-radius: 0px 0px 0px 20px;
+    vertical-align: middle;
+}
+
+#optionBar .undoredo {
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #25323A;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    background: white;
+    border: solid  1px white;
+    box-shadow: 4px 2px 0px #fc295a6c;
+}
+
+#optionBar #undo {
+    margin-right: 45px;
+}
+
+#optionBar .valueDisplay {
+    float: left;
+    padding-right: 5px;
+    font-family: Helvetica, sans-serif;
+    align-content: center;
+    font-size: 12px;
+    color: white;
+    text-shadow: 2px 2px 4px #444040;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+#optionBar .options {
+    float: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Helvetica, sans-serif;
+    align-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px #444040;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+ #optionBar .slider {
+    padding: 0px;
+    margin: 0px;
+    margin-top: 14px;
+    width: 170px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: #d3d3d3;
+    opacity: 0.6;
+    transition: opacity .2s;
+}
+
+ #optionBar .slider:hover {
+    opacity: 1;
+}
+
+ #optionBar .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #fc295a6c;
+} 
+
+.keepHidden {
+    display: none;
+}
+
+.fillstroke {
+ margin-top:7px;
+}
+
+#strokeWidthOutput {
+    margin: 0 px;
+    padding: 0 px;
+}
+
+.saveclear {
+    font-family: Helvetica, sans-serif;
+    color: #25323A;
+    font-size: 10px;
+    font-weight: bolder;
+    padding: 5px 10px 5px 10px;
+    margin-left: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.leftOptionBtns{
+    float: right;
+}
+
+#save {
+    background: #ffc400;
+    border: solid  1px #d19302;
+}
+#clear {
+    background: #7632FB;
+    border: solid  1px #5220b8;
+}
+
+#appIcon {
+    position: relative;
+    float: left;
+    margin-left: 15px;
+    margin-right: 30px;
+    margin-bottom: 40px;
+    height: 100%;
+}
+
+#mainHeading {
+    font-family: Helvetica, sans-serif;
+    align-content: center;
+    font-weight: bold;
+    font-size: 40px;
+    font-stretch: ultra-expanded;
+    color: white;
+    display: block;
+    margin: auto;
+    text-shadow: 2px 2px 4px #444040;
+}
+
+#tagline {
+    font-family: Brush Script MT, Courier New, Courier, monospace;
+    align-content: center;
+    color: white;
+    font-size: 26px;
+    color: #432630;
+    display: block;
+    margin: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#supportError {
+    display: block;
+    margin: 2em;
+    text-align: center;
+}
+#supportError h1 {
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    display: block;
+    margin: auto;
+}
+
+#supportError p {
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    size: 20px;
+}
+
+#supportError i {
+    font-size: 100px;
+    color: white;
+    display: block;
+    margin-top: 10px;
+}
+
+#canvasDiv {
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+#canvas {
+    display: block;
+    margin: auto;
+    background-color: white;
+    border: 3px solid #25323a96;
+}
+
+#toolbar {
+    position: relative;
+    float: left;
+    height: auto;
+    margin-top: 35px;
+}
+
+.icons, .iconbar {
+    display: block;
+    padding: 10px;
+    margin: 2px;
+    width: 20px;
+    background-color: #25323A;
+    box-shadow: 0 2px 6px #866363;
+}
+
+.icons {
+    margin: 2px;
+    border: 1.5px solid #fc295af3;
+    border-radius: 5px;
+}
+
+.toolTipText {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    visibility: hidden;
+    font-size: 10px;
+    width: 120px;
+    background-color: #00000075;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 105%;
+}
+
+.toolTipTextOptionBar {
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    visibility: hidden;
+    font-size: 10px;
+    width: 120px;
+    background-color: #00000075;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: relative;
+    margin: 10px;
+    z-index: 1;
+    top: 50%;
+    left: 0%;
+}
+
+.toolTipText::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%; /* To the left of the tooltip */
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #00000075 transparent transparent;
+}
+
+#moveToolToolTip:hover .toolTipText,
+#drawToolToolTip:hover .toolTipText,
+#lineToolToolTip:hover .toolTipText,
+#circleToolToolTip:hover .toolTipText,
+#rectToolToolTip:hover .toolTipText,
+#textToolToolTip:hover .toolTipText,
+#primaryColorToolTip:hover .toolTipText,
+#secondaryColorToolTip:hover .toolTipText,
+#switchColorToolTip:hover .toolTipText {
+    visibility: visible;
+}
+
+#moveToolToolTip,
+#drawToolToolTip,
+#lineToolToolTip,
+#circleToolToolTip,
+#rectToolToolTip,
+#textToolToolTip,
+#primaryColorToolTip,
+#secondaryColorToolTip,
+#switchColorToolTip {
+    position: relative;
+    display: block;
+}
+
+.color-pickers {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.color-pickers div{
+    border: 1.5px solid #2b2728b6;
+    border-radius: 5px;
+}
+
+ #changeColorsBtn {
+    color: #25323A;
+    display: block;
+    margin: auto;
+    margin-top: 7px;
+    margin-bottom: 5px;
+    border-radius: 45px;
+    background: white;
+    border: solid  1px white;
+    box-shadow: 2px 1px 0px #fc295a6c;
+}
+
+#fontSelect {
+    position: absolute;
+    margin-top: 5px;
+}
+
+#textPreview {
+    float: left;
+    margin-left: 155px;
+    margin-right: 20px;
+    font-family: Helvetica, sans-serif;
+    align-content: center;
+    font-size: 13px;
+    color: #f8f8f827;
+    text-shadow: 2px 2px 4px #fc295a2a;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+#textBox {
+	position: absolute;
+	border: 1px dashed #0000008c;
+	outline: 0;
+	display: none;
+	overflow: hidden;
+    white-space: nowrap;
+    font: 50px Palatino, Arial, sans-serif;
+    display: none;
+}
+
+.selected {
+    background-color: #9c7f7f;
+}
+
+#insertFileNamesIntoMe{
+    list-style: none;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-height: 60%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
